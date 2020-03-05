@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">GotIt_BA</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="view_orders">View Orders</string>
+
+</resources>
