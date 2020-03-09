@@ -30,6 +30,8 @@ public class AllOrdersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_orders);
 
+
+
         //setDates();
         init();
     }
@@ -152,10 +154,13 @@ public class AllOrdersActivity extends AppCompatActivity {
                             //@Override
                             public void done(List<ParseObject> objects, ParseException e) {
 
+                                for(ParseObject p : objects)
+                                {
+                                    customers.add(p.getString("cus_username"));
 
-                                    customers.add(objects.get(0).getString("cus_username"));
+                                    Log.d("id", "cus_username: " + p.getString("cus_username"));
+                                }
 
-                                    Log.d("id", "cus_username: " + objects.get(0).getString("cus_username"));
 
 
 

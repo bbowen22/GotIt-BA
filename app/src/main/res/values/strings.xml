@@ -4,5 +4,21 @@
     <string name="password">Password</string>
     <string name="sign_in">Sign In</string>
     <string name="view_orders">View Orders</string>
+    <string name="title_activity_nav">Nav</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_orders">Orders</string>
+    <string name="menu_cancellations">Cancellations</string>
+    <string name="menu_completions">Completions</string>
+    <string name="menu_revenue">Revenue</string>
+    <string name="menu_complaints">Complaints</string>
+    <string name="menu_users">Users</string>
+    <string name="button">Button</string>
 
 </resources>

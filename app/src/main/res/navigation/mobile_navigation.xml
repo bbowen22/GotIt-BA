@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.gotit_ba.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_orders"
+        android:name="com.example.gotit_ba.ui.orders.OrdersFragment"
+        android:label="@string/menu_orders"
+        tools:layout="@layout/fragment_orders" />
+
+    <fragment
+        android:id="@+id/nav_cancellations"
+        android:name="com.example.gotit_ba.ui.cancellations.CancellationsFragment"
+        android:label="@string/menu_cancellations"
+        tools:layout="@layout/fragment_cancellations" />
+
+    <fragment
+        android:id="@+id/nav_complaints"
+        android:name="com.example.gotit_ba.ui.complaints.ComplaintsFragment"
+        android:label="@string/menu_complaints"
+        tools:layout="@layout/fragment_complaints" />
+
+    <fragment
+        android:id="@+id/nav_completions"
+        android:name="com.example.gotit_ba.ui.completions.CompletionsFragment"
+        android:label="@string/menu_completions"
+        tools:layout="@layout/fragment_completions" />
+
+    <fragment
+        android:id="@+id/nav_users"
+        android:name="com.example.gotit_ba.ui.users.UsersFragment"
+        android:label="@string/menu_users"
+        tools:layout="@layout/fragment_users" />
+
+    <fragment
+        android:id="@+id/nav_revenue"
+        android:name="com.example.gotit_ba.ui.revenue.RevenueFragment"
+        android:label="@string/menu_revenue"
+        tools:layout="@layout/fragment_revenue" />
+</navigation>

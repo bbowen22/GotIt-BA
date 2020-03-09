@@ -35,6 +35,7 @@ public class LogInActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick (View V) {
+
                 final String username = etxtUsername.getText().toString();
                 final String password = etxtPassword.getText().toString();
                 validateUser(username, password);
@@ -110,5 +111,6 @@ public class LogInActivity extends AppCompatActivity {
         Intent intToHome = new Intent(LogInActivity.this, HomeActivity.class);
         startActivity(intToHome);
         finish();
+
     }
 }
