@@ -30,7 +30,7 @@ public class HomeFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        final Button btnViewOrders = root.findViewById(R.id.orders);
+        final Button btnViewOrders = root.findViewById(R.id.view_orders);
         btnViewOrders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

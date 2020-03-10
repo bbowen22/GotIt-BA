@@ -2,9 +2,11 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/LightYellow"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
+
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -39,10 +41,11 @@
             android:layout_height="wrap_content">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="142dp"
+                android:layout_height="119dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
+                app:cardBackgroundColor="@color/TeaGreen"
                 app:cardElevation="6dp"
                 app:cardCornerRadius="12dp"
                 android:layout_margin="12dp"
@@ -55,34 +58,41 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <Button
-                        android:layout_alignParentRight="true"
-                        android:id="@+id/orders"
+                    <TextView
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/baloo"
+                        android:text="@string/orders"
+                        android:textColor="@color/DarkBlue"
+                        android:textSize="18dp" />
+
+                    <Button
+                        android:textColor="@color/Gray"
+                        android:id="@+id/view_orders"
+                        android:layout_width="145dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
                         android:background="@color/Green"
-                        android:text="@string/view_orders"
+                        android:fontFamily="@font/convergence"
+                        android:text="@string/view_all"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textColor="#707070"
-                        android:textSize="18dp"
-                        android:text="Orders"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="142dp"
+                android:layout_height="119dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
+                app:cardBackgroundColor="@color/TeaGreen"
                 app:cardElevation="6dp"
                 app:cardCornerRadius="12dp"
                 android:layout_margin="12dp"
@@ -96,12 +106,211 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:layout_marginTop="12dp"
-                        android:textColor="#707070"
-                        android:textSize="18dp"
-                        android:text="Orders"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/baloo"
+                        android:text="@string/cancellations"
+                        android:textColor="@color/DarkBlue"
+                        android:textSize="18dp" />
+
+                    <Button
+                        android:id="@+id/view_cancellations"
+                        android:layout_width="145dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@color/Green"
+                        android:fontFamily="@font/convergence"
+                        android:text="@string/view_all"
+                        android:textColor="@color/Gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="142dp"
+                android:layout_height="119dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                app:cardBackgroundColor="@color/TeaGreen"
+                app:cardElevation="6dp"
+                app:cardCornerRadius="12dp"
+                android:layout_margin="12dp"
+                >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/baloo"
+                        android:text="@string/complaints"
+                        android:textColor="@color/DarkBlue"
+                        android:textSize="18dp" />
+
+                    <Button
+                        android:id="@+id/view_complaints"
+                        android:layout_width="145dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@color/Green"
+                        android:fontFamily="@font/convergence"
+                        android:text="@string/view_all"
+                        android:textColor="@color/Gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="142dp"
+                android:layout_height="119dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                app:cardBackgroundColor="@color/TeaGreen"
+                app:cardElevation="6dp"
+                app:cardCornerRadius="12dp"
+                android:layout_margin="12dp"
+                >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/baloo"
+                        android:text="@string/completions"
+                        android:textColor="@color/DarkBlue"
+                        android:textSize="18dp" />
+
+                    <Button
+                        android:id="@+id/view_completions"
+                        android:layout_width="145dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@color/Green"
+                        android:fontFamily="@font/convergence"
+                        android:text="@string/view_all"
+                        android:textColor="@color/Gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="142dp"
+                android:layout_height="119dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                app:cardBackgroundColor="@color/TeaGreen"
+                app:cardElevation="6dp"
+                app:cardCornerRadius="12dp"
+                android:layout_margin="12dp"
+                >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/baloo"
+                        android:text="@string/users"
+                        android:textColor="@color/DarkBlue"
+                        android:textSize="18dp" />
+
+                    <Button
+                        android:id="@+id/view_users"
+                        android:layout_width="145dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@color/Green"
+                        android:fontFamily="@font/convergence"
+                        android:text="@string/view_all"
+                        android:textColor="@color/Gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="142dp"
+                android:layout_height="119dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                app:cardBackgroundColor="@color/TeaGreen"
+                app:cardElevation="6dp"
+                app:cardCornerRadius="12dp"
+                android:layout_margin="12dp"
+                >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/baloo"
+                        android:text="@string/revenue"
+                        android:textColor="@color/DarkBlue"
+                        android:textSize="18dp" />
+
+                    <Button
+                        android:id="@+id/view_revenue"
+                        android:layout_width="145dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@color/Green"
+                        android:fontFamily="@font/convergence"
+                        android:text="@string/view_all"
+                        android:textColor="@color/Gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </LinearLayout>
 

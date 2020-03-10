@@ -30,11 +30,11 @@
 
             <Button
                 android:layout_alignParentRight="true"
-                android:id="@+id/orders"
+                android:id="@+id/view_orders"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/Green"
-                android:text="@string/view_orders"
+                android:text="@string/orders"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

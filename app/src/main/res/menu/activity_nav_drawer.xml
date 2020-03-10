@@ -7,31 +7,31 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:title="@string/home" />
         <item
             android:id="@+id/nav_orders"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_orders" />
+            android:title="@string/orders" />
         <item
             android:id="@+id/nav_cancellations"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_cancellations" />
+            android:title="@string/cancellations" />
         <item
             android:id="@+id/nav_complaints"
             android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_complaints" />
+            android:title="@string/complaints" />
         <item
             android:id="@+id/nav_completions"
             android:icon="@drawable/ic_menu_share"
-            android:title="@string/menu_completions" />
+            android:title="@string/completions" />
         <item
             android:id="@+id/nav_users"
             android:icon="@drawable/ic_menu_send"
-            android:title="@string/menu_users" />
+            android:title="@string/users" />
         <item
             android:id="@+id/nav_revenue"
             android:icon="@drawable/ic_menu_send"
-            android:title="@string/menu_revenue" />
+            android:title="@string/revenue" />
     </group>
 
 
