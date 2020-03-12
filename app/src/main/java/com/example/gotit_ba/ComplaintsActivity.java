@@ -4,6 +4,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -17,13 +23,14 @@ import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class ComplaintsActivity extends AppCompatActivity {
 
     public static int size;
     public static List<Complaints> complaints = new ArrayList<>();
+
+    public Button btnFilter;
+    public EditText etSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,7 @@ public class ComplaintsActivity extends AppCompatActivity {
 
         loadComplaints();
 
+        /*
         final Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             public void run() {
@@ -39,8 +47,40 @@ public class ComplaintsActivity extends AppCompatActivity {
             }
         }, 1000);
 
-        init();
+        init(); */
+
+        Spinner spinner = findViewById(R.id.complaints_spinner);
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("Choose...");
+        arrayList.add("Date");
+        arrayList.add("Status");
+        arrayList.add("Type");
+        arrayList.add("User");
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String clicked = parent.getItemAtPosition(position).toString();
+                btnFilter = findViewById(R.id.filter1);
+                etSearch = findViewById(R.id.search1);
+
+                if (clicked == "Date") {
+                    init();
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
+
+
 
     //Function to populate table
     public void init() {
@@ -54,15 +94,15 @@ public class ComplaintsActivity extends AppCompatActivity {
         tv0.setTextColor(Color.parseColor("#707070"));
         tbrow0.addView(tv0);
         TextView tv1 = new TextView(this);
-        tv1.setText(" Customer ");
+        tv1.setText(" Status ");
         tv1.setTextColor(Color.parseColor("#707070"));
         tbrow0.addView(tv1);
         TextView tv2 = new TextView(this);
-        tv2.setText(" Driver ");
+        tv2.setText(" Type ");
         tv2.setTextColor(Color.parseColor("#707070"));
         tbrow0.addView(tv2);
         TextView tv3 = new TextView(this);
-        tv3.setText(" Store ");
+        tv3.setText(" User ");
         tv3.setTextColor(Color.parseColor("#707070"));
         tbrow0.addView(tv3);
         stk.addView(tbrow0);

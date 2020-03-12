@@ -45,7 +45,6 @@ public class AllOrdersActivity extends AppCompatActivity {
     //Function to populate table
     public void init() {
 
-
         TableLayout stk = (TableLayout) findViewById(R.id.tablemain);
         //Set header row
         TableRow tbrow0 = new TableRow(this);

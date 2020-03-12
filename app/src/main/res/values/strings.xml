@@ -20,5 +20,7 @@
     <string name="complaints">Complaints</string>
     <string name="users">Users</string>
     <string name="button">Button</string>
+    <string name="idk">...</string>
+    <string name="filter">FILTER</string>
 
 </resources>

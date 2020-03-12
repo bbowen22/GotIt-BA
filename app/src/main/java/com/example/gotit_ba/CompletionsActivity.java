@@ -4,6 +4,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -17,14 +23,14 @@ import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class CompletionsActivity extends AppCompatActivity {
 
 
     public static int size;
     public static List<Completions> completions = new ArrayList<>();
+    public Button btnFilter;
+    public EditText etSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,7 @@ public class CompletionsActivity extends AppCompatActivity {
 
         loadCompletions();
 
+        /*
         final Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             public void run() {
@@ -40,8 +47,39 @@ public class CompletionsActivity extends AppCompatActivity {
             }
         }, 1000);
 
-        init();
+        init(); */
+
+        Spinner spinner = findViewById(R.id.completions_spinner);
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("Choose...");
+        arrayList.add("Date");
+        arrayList.add("Customer");
+        arrayList.add("Driver");
+        arrayList.add("Store");
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String clicked = parent.getItemAtPosition(position).toString();
+                btnFilter = findViewById(R.id.filter2);
+                etSearch = findViewById(R.id.search2);
+                //Toast.makeText(parent.getContext(), "Selected: " + clicked, Toast.LENGTH_LONG).show();
+
+                if (clicked == "Date") {
+                    init();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
+
 
     //Function to populate table
     public void init() {
