@@ -15,7 +15,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.gotit_ba.AllOrdersActivity;
+import com.example.gotit_ba.ComplaintsActivity;
+import com.example.gotit_ba.CompletionsActivity;
 import com.example.gotit_ba.R;
+import com.example.gotit_ba.UsersActivity;
 
 public class HomeFragment extends Fragment {
 
@@ -25,16 +28,47 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
+        //on click for orders page
         final Button btnViewOrders = root.findViewById(R.id.view_orders);
         btnViewOrders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), AllOrdersActivity.class);
+                startActivity(i);
+            }
+        });
+
+        //on click for users page
+        final Button btnViewUsers = root.findViewById(R.id.view_users);
+        btnViewUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), UsersActivity.class);
+                startActivity(i);
+            }
+        });
+
+
+        //on click for completions page
+        final Button btnViewCompletions = root.findViewById(R.id.view_completions);
+        btnViewCompletions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), CompletionsActivity.class);
+                startActivity(i);
+            }
+        });
+
+        //on click for complaints page
+        final Button btnViewComplaints = root.findViewById(R.id.view_complaints);
+        btnViewComplaints.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), ComplaintsActivity.class);
                 startActivity(i);
             }
         });

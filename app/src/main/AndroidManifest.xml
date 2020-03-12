@@ -12,15 +12,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".UsersActivity"></activity>
+        <activity android:name=".CompletionsActivity" />
+        <activity android:name=".ComplaintsActivity" />
         <activity
             android:name=".Nav"
             android:label="@string/title_activity_nav"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".AllOrdersActivity"
-            android:label="@string/orders"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AllOrdersActivity"
+            android:label="@string/orders" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".LogInActivity"
+        <activity
+            android:name=".LogInActivity"
             android:label="@string/login_activity_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

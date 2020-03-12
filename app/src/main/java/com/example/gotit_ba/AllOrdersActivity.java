@@ -17,28 +17,35 @@ import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class AllOrdersActivity extends AppCompatActivity {
-    //public static int i;
+
     public static int size;
-    public static List<Integer> dates = new ArrayList<>();
-    public static List<Integer> driverid = new ArrayList<>();
-    public static List<String> customers = new ArrayList<>();
+    public static List<Orders> orders = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_orders);
 
+        loadOrders();
 
+       final Timer timer = new Timer();
+        timer.schedule(new TimerTask(){
+            public void run() {
+                timer.cancel();
+            }
+        }, 1000);
 
-        //setDates();
         init();
     }
 
-
     //Function to populate table
     public void init() {
+
+
         TableLayout stk = (TableLayout) findViewById(R.id.tablemain);
         //Set header row
         TableRow tbrow0 = new TableRow(this);
@@ -62,44 +69,113 @@ public class AllOrdersActivity extends AppCompatActivity {
         stk.addView(tbrow0);
 
 
-        setSizeDatesDrivers();
-        setCustomers();
-        Log.d("table", "Size = " + size );
+        Log.d("table", "Size = " + orders.size() );
 
-        for (int i = 0; i < size; i++) {
+
+        for (Orders o : orders) {
             TableRow tbrow = new TableRow(this);
             //col 1
             TextView t1v = new TextView(this);
-            t1v.setText(String.valueOf(dates.get(i)) + " ");
+            t1v.setText(o.getCreated() + " ");
+            Log.d("table created value", " " + o.getCreated());
+            //t1v.setText(" ");
             t1v.setTextColor(Color.parseColor("#707070"));
-            t1v.setGravity(Gravity.CENTER);
+            t1v.setGravity(Gravity.LEFT);
             tbrow.addView(t1v);
             //col2
             TextView t2v = new TextView(this);
-            t2v.setText(String.valueOf(customers.get(i)) + " " );
+            t2v.setText(o.getCustomer() + " " );
             t2v.setTextColor(Color.parseColor("#707070"));
-            t2v.setGravity(Gravity.CENTER);
+            t2v.setGravity(Gravity.LEFT);
             tbrow.addView(t2v);
             //col3
             TextView t3v = new TextView(this);
-            t3v.setText(String.valueOf(driverid.get(i)));
+            t3v.setText(o.getDriver() + " ");
             t3v.setTextColor(Color.parseColor("#707070"));
-            t3v.setGravity(Gravity.CENTER);
+            t3v.setGravity(Gravity.LEFT);
             tbrow.addView(t3v);
             //col4
             TextView t4v = new TextView(this);
-            t4v.setText(" ");
+            t4v.setText(o.getStore() + " ");
             t4v.setTextColor(Color.parseColor("#707070"));
-            t4v.setGravity(Gravity.CENTER);
+            t4v.setGravity(Gravity.LEFT);
             tbrow.addView(t4v);
             stk.addView(tbrow);
         }
 
     }
 
+    public void loadOrders(){
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Order");
+        query.include("cus_id");
+        query.include("dri_id");
+        query.include("sto_id");
+        query.orderByAscending("createdAt");
+
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> orderList, ParseException e) {
+                if (e == null) {
+
+                    //Set size of table
+                    size = orderList.size();
+                    Log.d("SIZE", "Retrieved " + orderList.size() + " orders");
+
+
+                    //Set list of order objects
+                    for (ParseObject order : orderList) {
+
+                        ParseObject cus = (ParseObject) order.get("cus_id");
+                        ParseObject driver = (ParseObject) order.get("dri_id");
+                        ParseObject store = (ParseObject) order.get("sto_id");
+
+                        Log.d("driver", " " + driver.getString("dri_username"));
+                        Log.d("customer", " " + cus.getString("cus_username"));
+                        Log.d("store", " " + store.getString("sto_name"));
+
+                        Orders o = new Orders(order.getCreatedAt(),cus.getString("cus_username"), driver.getString("dri_username"), store.getString("sto_name"));
+                        orders.add(o);
+                        Log.d("object array date", " " + o.getCreated());
+                    }
+
+
+                } else {
+                    Log.d("size", "Error: " + e.getMessage());
+
+                }
+            }
+        });
+
+/*
+        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("SupportTicket");
+        query.include("ord_id");
+        query.include("order.cus_id");
+        query.orderByAscending("createdAt");
+
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> orderList2, ParseException e) {
+                if (e == null) {
+
+                        ParseObject i = (ParseObject) orderList2.get(0).get("cus_id");
+                        Log.d("cus", "object id: " + i.getObjectId());
+                        Log.d("second query", i.getString("cus_username"));
+
+                } else {
+                    Log.d("size", "Error: " + e.getMessage());
+
+                }
+            }
+        }); */
+
+    }
+
+
+    /*
     //Function to get list size (how many orders there are), date created, and drivers
     public void setSizeDatesDrivers() {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Order");
+        query.orderByAscending("createdAt");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> orderList, ParseException e) {
@@ -111,7 +187,7 @@ public class AllOrdersActivity extends AppCompatActivity {
 
                     //Set list of dates
                     for (ParseObject date : orderList) {
-                        int DATES = date.getInt("ord_created");
+                        Date DATES = date.getCreatedAt();
                         dates.add(DATES);
                     }
                     Log.d("date", "Date = " + dates.get(0));
@@ -123,7 +199,6 @@ public class AllOrdersActivity extends AppCompatActivity {
                     }
                     Log.d("driver", "Driver = " + driverid.get(0));
 
-
                 } else {
                     Log.d("size", "Error: " + e.getMessage());
 
@@ -132,9 +207,10 @@ public class AllOrdersActivity extends AppCompatActivity {
         });
     }
 
-
     public void setCustomers() {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Order");
+        query.include("cus_id");
+        query.orderByAscending("createdAt");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> cusList, ParseException e) {
@@ -143,7 +219,11 @@ public class AllOrdersActivity extends AppCompatActivity {
                     for (int i = 0; i < cusList.size(); i++) {
 
                         ParseObject d = (ParseObject) cusList.get(i).get("cus_id");
-                        d.getObjectId();
+                        //d.getString("cus_username");
+                        customers.add(d.getString("cus_username"));
+
+                        Log.d("id", "cus_username: " + d.getString("cus_username"));
+                       /* d.getObjectId();
 
                         Log.d("cus", "object id: " + d.getObjectId());
 
@@ -160,25 +240,15 @@ public class AllOrdersActivity extends AppCompatActivity {
 
                                     Log.d("id", "cus_username: " + p.getString("cus_username"));
                                 }
-
-
-
-
                             }
 
-                        });
-                    }
+                        });*/
+                 //   }
+             //   } else {
+              //      Log.d("cus", "Error: " + e.getMessage());
 
-                }
-
-                else {
-                    Log.d("cus", "Error: " + e.getMessage());
-
-                }
-            }
-        });
-    }
-
-
-
+            //    }
+          //  }
+     //   });
+  //  }
 }

@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/TeaGreen"
-    tools:context=".AllOrdersActivity">
+    tools:context=".CompletionsActivity">
 
     <ScrollView
-        android:id="@+id/scrollView1"
+        android:id="@+id/scrollView3"
         android:layout_width="388dp"
         android:layout_height="503dp"
         android:layout_alignParentLeft="true"
@@ -22,19 +22,19 @@
         app:layout_constraintVertical_bias="0.813">
 
         <HorizontalScrollView
-            android:id="@+id/hscrll1"
+            android:id="@+id/hscrll3"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
             <RelativeLayout
-                android:id="@+id/RelativeLayout1"
+                android:id="@+id/RelativeLayout3"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_gravity="center"
                 android:orientation="vertical">
 
                 <TableLayout
-                    android:id="@+id/tablemain"
+                    android:id="@+id/tablemain3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"></TableLayout>

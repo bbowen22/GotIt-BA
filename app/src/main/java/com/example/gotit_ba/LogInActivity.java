@@ -108,8 +108,8 @@ public class LogInActivity extends AppCompatActivity {
 
     //Function to change screen from login to homepage
     private void goHomeActivity() {
-        Intent intToHome = new Intent(LogInActivity.this, HomeActivity.class);
-        startActivity(intToHome);
+        Intent intent = new Intent(LogInActivity.this, Nav.class);
+        startActivity(intent);
         finish();
 
     }
