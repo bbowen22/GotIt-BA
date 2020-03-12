@@ -4,6 +4,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -18,12 +22,13 @@ import com.parse.ParseQuery;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllOrdersActivity extends AppCompatActivity {
+public class AllOrdersActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     //public static int i;
     public static int size;
     public static List<Integer> dates = new ArrayList<>();
     public static List<Integer> driverid = new ArrayList<>();
     public static List<String> customers = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,11 @@ public class AllOrdersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_all_orders);
 
 
+        Spinner spinner = (Spinner) findViewById(R.id.spFilter);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.filters_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.getOnItemSelectedListener(this);
 
         //setDates();
         init();
@@ -180,5 +190,13 @@ public class AllOrdersActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String text = adapterView.getItemAtPosition(i).toString();
+    }
 
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
 }

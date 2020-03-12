@@ -21,4 +21,11 @@
     <string name="users">Users</string>
     <string name="button">Button</string>
 
+    <string-array name="filters_array">
+        <item>Date</item>
+        <item>Customer</item>
+        <item>Driver</item>
+        <item>Store</item>
+    </string-array>
+
 </resources>

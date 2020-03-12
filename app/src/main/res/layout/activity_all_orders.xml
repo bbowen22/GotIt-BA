@@ -13,7 +13,6 @@
         android:layout_height="473dp"
         android:layout_alignParentLeft="true"
         android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
         android:background="@color/LightYellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,5 +41,16 @@
             </RelativeLayout>
         </HorizontalScrollView>
     </ScrollView>
+
+    <Spinner
+        android:id="@+id/spFilter"
+        android:layout_width="166dp"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
