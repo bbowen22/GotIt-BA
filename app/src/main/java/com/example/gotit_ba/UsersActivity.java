@@ -33,13 +33,17 @@ public class UsersActivity extends AppCompatActivity {
     ArrayList<Users> users_fname = new ArrayList<>();
     ArrayList<Users> users_lname = new ArrayList<>();
     ArrayList<Users> users_username = new ArrayList<>();
+    ArrayList<Users> users_date = new ArrayList<>();
     public Button btnFilter;
     public EditText etSearch;
+    public TableLayout stk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
+
+        stk = findViewById(R.id.tablemain2);
 
         loadUsers();
 
@@ -55,6 +59,7 @@ public class UsersActivity extends AppCompatActivity {
         Spinner spinner = findViewById(R.id.users_spinner);
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("Choose...");
+        arrayList.add("View All");
         arrayList.add("Date");
         arrayList.add("First Name");
         arrayList.add("Last Name");
@@ -69,32 +74,40 @@ public class UsersActivity extends AppCompatActivity {
                 String clicked = parent.getItemAtPosition(position).toString();
                 btnFilter = findViewById(R.id.filter);
                 etSearch = findViewById(R.id.search);
-                //Toast.makeText(parent.getContext(), "Selected: " + clicked, Toast.LENGTH_LONG).show();
 
-                if (clicked == "Date") {
+                if (clicked == "View All") {
                     init();
 
-                 /* btnFilter.setOnClickListener(new View.OnClickListener() {
-                      @Override
-                      public void onClick(View v) {
-                          ArrayList<String> list1 = new ArrayList<>();
-                          for(Users i : users){
-                              list1.add(i.getCreated());
-                          }
-                          final String s = etSearch.getText().toString();
-                          if(list1.contains(s)){
-                              loadDateFilter(s);
-                              initDateFilter();
-                          } else {
-                              Toast.makeText(UsersActivity.this, "Sorry, search invalid! ", Toast.LENGTH_LONG).show();
-                          }
-                      }
-                  }); */
+                } else if (clicked == "Date") {
+                    stk.removeAllViews();
+                    etSearch.setHint("Enter as mm/dd/yyyy");
+                    btnFilter.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
 
-                }
+                            final String s = etSearch.getText().toString();
+                            ArrayList<String> list0 = new ArrayList<>();
 
-                else if(clicked == "First Name") {
+                            Log.d("DATE:", users.get(0).getCreated());
+                            for (Users i : users) {
+                                list0.add(i.getCreated());
+                            }
+                            Log.d("DATE:", list0.get(0));
+                            Log.d("INPUT:", s);
 
+                            if (list0.contains(s)) {
+                                initDate(s);
+                                Log.d("FLAG:", "Made it to if...");
+                            } else {
+                                Toast.makeText(UsersActivity.this, "Sorry, search invalid!", Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                    });
+
+                } else if(clicked == "First Name") {
+                    stk.removeAllViews();
+                    etSearch.setHint(" ");
                     btnFilter.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -117,9 +130,10 @@ public class UsersActivity extends AppCompatActivity {
                             }
                         }
                     });
-                }
 
-                else if(clicked == "Last Name") {
+                } else if(clicked == "Last Name") {
+                    stk.removeAllViews();
+                    etSearch.setHint(" ");
                     btnFilter.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -142,9 +156,10 @@ public class UsersActivity extends AppCompatActivity {
                             }
                         }
                     });
-                }
 
-                else if(clicked == "Username") {
+                } else if(clicked == "Username") {
+                    stk.removeAllViews();
+                    etSearch.setHint(" ");
                     btnFilter.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -170,8 +185,6 @@ public class UsersActivity extends AppCompatActivity {
                 }
             }
 
-
-
             @Override
             public void onNothingSelected(AdapterView <?> parent) {
             }
@@ -182,8 +195,9 @@ public class UsersActivity extends AppCompatActivity {
 
     //Function to populate main table
     public void init() {
+        //Clear table
+        stk.removeAllViews();
 
-        TableLayout stk = (TableLayout) findViewById(R.id.tablemain2);
         //Set header row
         TableRow tbrow0 = new TableRow(this);
         tbrow0.setBackgroundColor(Color.parseColor("#B1CF5F"));
@@ -205,9 +219,7 @@ public class UsersActivity extends AppCompatActivity {
         tbrow0.addView(tv3);
         stk.addView(tbrow0);
 
-
         Log.d("table", "Size = " + users.size() );
-
 
         for (Users u: users) {
             TableRow tbrow = new TableRow(this);
@@ -279,6 +291,70 @@ public class UsersActivity extends AppCompatActivity {
         });
     }
 
+    public void initDate(String s) {
+
+        for(Users i : users){
+            if (i.getCreated().equals(s)) {
+
+                Log.d("INITDATE LIST:", i.getCreated());
+                users_date.add(i);
+                Log.d("INITDATE LIST:", String.valueOf(users_date.size()));
+            }
+
+            else Log.d("INITDATE LIST:", "failed");
+        }
+        //Set header row
+        TableRow tbrow0 = new TableRow(this);
+        tbrow0.setBackgroundColor(Color.parseColor("#B1CF5F"));
+        TextView tv0 = new TextView(this);
+        tv0.setText(" Date ");
+        tv0.setTextColor(Color.parseColor("#707070"));
+        tbrow0.addView(tv0);
+        TextView tv1 = new TextView(this);
+        tv1.setText(" First Name ");
+        tv1.setTextColor(Color.parseColor("#707070"));
+        tbrow0.addView(tv1);
+        TextView tv2 = new TextView(this);
+        tv2.setText(" Last Name ");
+        tv2.setTextColor(Color.parseColor("#707070"));
+        tbrow0.addView(tv2);
+        TextView tv3 = new TextView(this);
+        tv3.setText(" Username ");
+        tv3.setTextColor(Color.parseColor("#707070"));
+        tbrow0.addView(tv3);
+        stk.addView(tbrow0);
+
+        for (Users u1: users_date) {
+            TableRow tbrow = new TableRow(this);
+            //col 1
+            TextView t1v = new TextView(this);
+            t1v.setText(u1.getCreated() + " ");
+
+            t1v.setTextColor(Color.parseColor("#707070"));
+            t1v.setGravity(Gravity.LEFT);
+            tbrow.addView(t1v);
+            //col2
+            TextView t2v = new TextView(this);
+            t2v.setText(" " + u1.getFname() + " ");
+            t2v.setTextColor(Color.parseColor("#707070"));
+            t2v.setGravity(Gravity.LEFT);
+            tbrow.addView(t2v);
+            //col3
+            TextView t3v = new TextView(this);
+            t3v.setText(u1.getLname() + " ");
+            t3v.setTextColor(Color.parseColor("#707070"));
+            t3v.setGravity(Gravity.LEFT);
+            tbrow.addView(t3v);
+            //col4
+            TextView t4v = new TextView(this);
+            t4v.setText(u1.getUsername() + " ");
+            t4v.setTextColor(Color.parseColor("#707070"));
+            t4v.setGravity(Gravity.LEFT);
+            tbrow.addView(t4v);
+            stk.addView(tbrow);
+        }
+    }
+
     public void initFname(String s) {
 
         for(Users i : users){
@@ -288,10 +364,9 @@ public class UsersActivity extends AppCompatActivity {
                 users_fname.add(i);
             }
 
+
             else Log.d("INITFNAME LIST:", "failed");
         }
-
-            TableLayout stk = (TableLayout) findViewById(R.id.tablemain2);
             //Set header row
             TableRow tbrow0 = new TableRow(this);
             tbrow0.setBackgroundColor(Color.parseColor("#B1CF5F"));
@@ -341,7 +416,6 @@ public class UsersActivity extends AppCompatActivity {
                 t4v.setGravity(Gravity.LEFT);
                 tbrow.addView(t4v);
                 stk.addView(tbrow);
-         break;
         }
     }
 
@@ -356,8 +430,6 @@ public class UsersActivity extends AppCompatActivity {
 
             else Log.d("INITLNAME LIST:", "failed");
         }
-
-        TableLayout stk = (TableLayout) findViewById(R.id.tablemain2);
         //Set header row
         TableRow tbrow0 = new TableRow(this);
         tbrow0.setBackgroundColor(Color.parseColor("#B1CF5F"));
@@ -407,7 +479,7 @@ public class UsersActivity extends AppCompatActivity {
             t4v.setGravity(Gravity.LEFT);
             tbrow.addView(t4v);
             stk.addView(tbrow);
-            break;
+            //break;
         }
     }
 
@@ -422,8 +494,6 @@ public class UsersActivity extends AppCompatActivity {
 
             else Log.d("INITUNAME LIST:", "failed");
         }
-
-        TableLayout stk = (TableLayout) findViewById(R.id.tablemain2);
         //Set header row
         TableRow tbrow0 = new TableRow(this);
         tbrow0.setBackgroundColor(Color.parseColor("#B1CF5F"));
@@ -473,7 +543,7 @@ public class UsersActivity extends AppCompatActivity {
             t4v.setGravity(Gravity.LEFT);
             tbrow.addView(t4v);
             stk.addView(tbrow);
-            break;
+            //break;
         }
     }
 }
