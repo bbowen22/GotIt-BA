@@ -15,6 +15,8 @@
         <activity android:name=".UsersActivity"></activity>
         <activity android:name=".CompletionsActivity" />
         <activity android:name=".ComplaintsActivity" />
+        <activity android:name=".CancellationsActivity" />
+
         <activity
             android:name=".Nav"
             android:label="@string/title_activity_nav"

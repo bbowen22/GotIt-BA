@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.gotit_ba.AllOrdersActivity;
+import com.example.gotit_ba.CancellationsActivity;
 import com.example.gotit_ba.ComplaintsActivity;
 import com.example.gotit_ba.CompletionsActivity;
 import com.example.gotit_ba.R;
@@ -72,6 +73,27 @@ public class HomeFragment extends Fragment {
                 startActivity(i);
             }
         });
+
+        //on click for cancellations page
+        final Button btnViewCancellations = root.findViewById(R.id.view_cancellations);
+        btnViewCancellations.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), CancellationsActivity.class);
+                startActivity(i);
+            }
+        });
+
+        /*
+        //on click for revenue page
+        final Button btnViewRevenue = root.findViewById(R.id.view_revenue);
+        btnViewRevenue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), RevenueActivity.class);
+                startActivity(i);
+            }
+        }); */
 
         final TextView textView = root.findViewById(R.id.text_home);
         homeViewModel.getText().observe(this, new Observer<String>() {
