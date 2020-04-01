@@ -47,15 +47,6 @@ public class UsersActivity extends AppCompatActivity {
 
         loadUsers();
 
-       /* final Timer timer = new Timer();
-        timer.schedule(new TimerTask(){
-            public void run() {
-                timer.cancel();
-            }
-        }, 1000);*/
-
-        //init();
-
         Spinner spinner = findViewById(R.id.users_spinner);
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("Choose...");
