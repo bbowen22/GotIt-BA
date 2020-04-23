@@ -4,6 +4,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -17,35 +23,55 @@ import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
-public class AllOrdersActivity extends AppCompatActivity {
-
+public class DeliveredOrdersActivity extends AppCompatActivity {
     public static int size;
-    public static List<Orders> orders = new ArrayList<>();
+    public static List<Orders> delivered = new ArrayList<>();
+    public Button btnFilter;
+    public EditText etSearch;
+    public TableLayout stk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_orders);
+        setContentView(R.layout.activity_delivered_orders);
 
+
+        stk = findViewById(R.id.tablemain6);
         loadOrders();
 
-       final Timer timer = new Timer();
-        timer.schedule(new TimerTask(){
-            public void run() {
-                timer.cancel();
-            }
-        }, 1000);
+        Spinner spinner = findViewById(R.id.delivered_spinner);
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("Choose...");
+        arrayList.add("View All");
 
-        init();
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String clicked = parent.getItemAtPosition(position).toString();
+                btnFilter = findViewById(R.id.filter6);
+                etSearch = findViewById(R.id.search6);
+
+                if (clicked == "View All") {
+                    init();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     //Function to populate table
     public void init() {
 
-        TableLayout stk = (TableLayout) findViewById(R.id.tablemain);
+        TableLayout stk = (TableLayout) findViewById(R.id.tablemain6);
         //Set header row
         TableRow tbrow0 = new TableRow(this);
         tbrow0.setBackgroundColor(Color.parseColor("#B1CF5F"));
@@ -68,10 +94,10 @@ public class AllOrdersActivity extends AppCompatActivity {
         stk.addView(tbrow0);
 
 
-        Log.d("table", "Size = " + orders.size() );
+        Log.d("table", "Size = " + delivered.size() );
 
 
-        for (Orders o : orders) {
+        for (Orders o : delivered) {
             TableRow tbrow = new TableRow(this);
             //col 1
             TextView t1v = new TextView(this);
@@ -105,13 +131,21 @@ public class AllOrdersActivity extends AppCompatActivity {
     }
 
     public void loadOrders(){
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Order");
-        query.include("cus_id");
-        query.include("dri_id");
-        query.include("sto_id");
-        query.orderByAscending("createdAt");
+        ParseQuery<ParseObject> query1 = ParseQuery.getQuery("Order");
+        query1.whereEqualTo("ord_status", "Delivered");
 
-        query.findInBackground(new FindCallback<ParseObject>() {
+        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Order");
+        query2.whereEqualTo("ord_status", "Paid");
+
+        List<ParseQuery<ParseObject>> queries = new ArrayList<ParseQuery<ParseObject>>();
+        queries.add(query1);
+        queries.add(query2);
+
+        ParseQuery<ParseObject> mainQuery = ParseQuery.or(queries);
+        mainQuery.include("cus_id");
+        mainQuery.include("dri_id");
+        mainQuery.include("sto_id");
+        mainQuery.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> orderList, ParseException e) {
                 if (e == null) {
@@ -133,10 +167,9 @@ public class AllOrdersActivity extends AppCompatActivity {
                         Log.d("store", " " + store.getString("sto_name"));
 
                         Orders o = new Orders(order.getCreatedAt(),cus.getString("cus_username"), driver.getString("dri_username"), store.getString("sto_name"));
-                        orders.add(o);
+                        delivered.add(o);
                         Log.d("object array date", " " + o.getCreated());
                     }
-
 
                 } else {
                     Log.d("size", "Error: " + e.getMessage());
@@ -146,5 +179,4 @@ public class AllOrdersActivity extends AppCompatActivity {
         });
 
     }
-
 }

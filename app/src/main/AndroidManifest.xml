@@ -12,11 +12,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UsersActivity"></activity>
-        <activity android:name=".CompletionsActivity" />
-        <activity android:name=".ComplaintsActivity" />
-        <activity android:name=".CancellationsActivity" />
-
+        <activity android:name=".RevHomeActivity"
+            android:label="@string/revenue"/>
+        <activity android:name=".DeliveredOrdersActivity"></activity>
+        <activity android:name=".VendorRevenueActivity" />
+        <activity android:name=".DriverRevenueActivity" />
+        <activity android:name=".GotItRevenueActivity" />
+        <activity
+            android:name=".UsersActivity"
+            android:label="@string/users" />
+        <activity
+            android:name=".CompletionsActivity"
+            android:label="@string/completions" />
+        <activity
+            android:name=".ComplaintsActivity"
+            android:label="@string/complaints" />
+        <activity
+            android:name=".CancellationsActivity"
+            android:label="@string/cancellations" />
         <activity
             android:name=".Nav"
             android:label="@string/title_activity_nav"

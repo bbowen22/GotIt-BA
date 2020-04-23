@@ -73,34 +73,6 @@ public class LogInActivity extends AppCompatActivity {
         });
     }
 
-/*
-        //Query to check user input against object (password)
-        ParseQuery<ParseObject> pwordQuery = ParseQuery.getQuery("InternalUser");
-        pwordQuery.whereEqualTo("inu_password", password);
-
-        //Do compound query to validate both username AND password for a specific object
-        List<ParseQuery<ParseObject>> queries = new ArrayList<>();
-        queries.add(userQuery);
-        queries.add(pwordQuery);
-        ParseQuery<ParseObject> mainQuery = ParseQuery.or(queries);
-        mainQuery.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> results, ParseException e) {
-                if (e == null) {
-                    if (results.size() == 0) {
-                        Toast.makeText(LogInActivity.this, "Invalid user credentials", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        Log.d("users", "Retrieved " + results.size() + " users");
-                        goHomeActivity();
-                    }
-
-                } else {
-                    Log.d("users", "Error: " + e.getMessage());
-
-                }
-            }
-        }); */
-
 
 
 

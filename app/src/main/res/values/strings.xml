@@ -12,6 +12,7 @@
     <string name="action_settings">Settings</string>
     <string name="login_activity_title">Log In</string>
     <string name="view_all">View All</string>
+    <string name="view">View</string>
     <string name="home">Home</string>
     <string name="orders">Orders</string>
     <string name="cancellations">Cancellations</string>
@@ -22,5 +23,9 @@
     <string name="button">Button</string>
     <string name="idk">...</string>
     <string name="filter">FILTER</string>
+    <string name="rev_gi">Got It! Revenue</string>
+    <string name="rev_dri">Driver Revenue</string>
+    <string name="rev_ven">Vendor Revenue</string>
+    <string name="delivered">Delivered Orders</string>
 
 </resources>

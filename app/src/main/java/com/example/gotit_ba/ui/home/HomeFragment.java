@@ -19,6 +19,7 @@ import com.example.gotit_ba.CancellationsActivity;
 import com.example.gotit_ba.ComplaintsActivity;
 import com.example.gotit_ba.CompletionsActivity;
 import com.example.gotit_ba.R;
+import com.example.gotit_ba.RevHomeActivity;
 import com.example.gotit_ba.UsersActivity;
 
 public class HomeFragment extends Fragment {
@@ -84,16 +85,16 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        /*
+
         //on click for revenue page
         final Button btnViewRevenue = root.findViewById(R.id.view_revenue);
         btnViewRevenue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), RevenueActivity.class);
+                Intent i = new Intent(getActivity(), RevHomeActivity.class);
                 startActivity(i);
             }
-        }); */
+        });
 
         final TextView textView = root.findViewById(R.id.text_home);
         homeViewModel.getText().observe(this, new Observer<String>() {

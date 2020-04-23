@@ -66,6 +66,7 @@ public class CancellationsActivity extends AppCompatActivity {
                 etSearch = findViewById(R.id.search5);
 
                 if (clicked == "View All") {
+                    stk.removeAllViews();
                     init();
 
                 } else if (clicked == "Date") {
@@ -184,7 +185,7 @@ public class CancellationsActivity extends AppCompatActivity {
     //Function to populate table
     public void init() {
         //Clear table
-        stk.removeAllViews();
+        //stk.removeAllViews();
 
         //Set header row
         TableRow tbrow0 = new TableRow(this);

@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/TeaGreen"
-    tools:context=".CancellationsActivity">
+    tools:context=".GotItRevenueActivity">
 
     <ScrollView
-        android:id="@+id/scrollView5"
+        android:id="@+id/scrollView8"
         android:layout_width="388dp"
         android:layout_height="401dp"
         android:layout_alignParentLeft="true"
@@ -22,19 +22,19 @@
         app:layout_constraintVertical_bias="0.813">
 
         <HorizontalScrollView
-            android:id="@+id/hscrll5"
+            android:id="@+id/hscrll8"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
             <RelativeLayout
-                android:id="@+id/RelativeLayout5"
+                android:id="@+id/RelativeLayout8"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_gravity="center"
                 android:orientation="vertical">
 
                 <TableLayout
-                    android:id="@+id/tablemain5"
+                    android:id="@+id/tablemain8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"></TableLayout>
@@ -43,25 +43,25 @@
     </ScrollView>
 
     <EditText
-        android:id="@+id/search5"
+        android:id="@+id/search8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="28dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView5"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/complaints_spinner"
+        app:layout_constraintStart_toEndOf="@+id/gi_rev_spinner"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.482" />
 
     <Spinner
-        android:id="@+id/cancellations_spinner"
+        android:id="@+id/gi_rev_spinner"
         android:layout_width="129dp"
         android:layout_height="41dp"
         android:background="@color/Green"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView5"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,16 +70,16 @@
 
     <Button
         android:textColor="@color/Gray"
-        android:id="@+id/filter5"
+        android:id="@+id/filter8"
         android:layout_width="100dp"
         android:layout_height="39dp"
         android:layout_marginTop="15dp"
         android:background="@color/Green"
         android:text="@string/filter"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView5"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.546"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search5"
+        app:layout_constraintTop_toBottomOf="@+id/search8"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
