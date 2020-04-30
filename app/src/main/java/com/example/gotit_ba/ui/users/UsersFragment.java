@@ -62,6 +62,8 @@ public class UsersFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         stk = view.findViewById(R.id.tablemain2);
+        btnFilter = view.findViewById(R.id.filter);
+        etSearch = view.findViewById(R.id.search);
         loadUsers();
 
         Spinner spinner = view.findViewById(R.id.users_spinner);
@@ -80,11 +82,13 @@ public class UsersFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String clicked = parent.getItemAtPosition(position).toString();
-                btnFilter = view.findViewById(R.id.filter);
-                etSearch = view.findViewById(R.id.search);
 
                 if (clicked == "View All") {
+                    stk.removeAllViews();
                     init();
+                    if (users.size() == 0) {
+                        Toast.makeText(getContext(), "Sorry, no users to show!", Toast.LENGTH_LONG).show();
+                    }
 
                 } else if (clicked == "Date") {
                     stk.removeAllViews();

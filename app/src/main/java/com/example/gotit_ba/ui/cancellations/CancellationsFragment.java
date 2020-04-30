@@ -60,10 +60,12 @@ public class CancellationsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        stk = view.findViewById(R.id.tablemain5);
+        btnFilter = view.findViewById(R.id.filter5_1);
+        etSearch = view.findViewById(R.id.search5_1);
+        stk = view.findViewById(R.id.tablemain5_1);
         loadCancellations();
 
-        Spinner spinner = view.findViewById(R.id.cancellations_spinner);
+        Spinner spinner = view.findViewById(R.id.cancellations_spinner1);
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("Choose...");
         arrayList.add("View All");
@@ -79,12 +81,13 @@ public class CancellationsFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String clicked = parent.getItemAtPosition(position).toString();
-                btnFilter = view.findViewById(R.id.filter5);
-                etSearch = view.findViewById(R.id.search5);
 
                 if (clicked == "View All") {
                     stk.removeAllViews();
                     init();
+                    if (cancellations.size() == 0) {
+                        Toast.makeText(getContext(), "Sorry, no cancellations to show!", Toast.LENGTH_LONG).show();
+                    }
 
                 } else if (clicked == "Date") {
                     stk.removeAllViews();

@@ -60,6 +60,8 @@ public class CompletionsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         stk = view.findViewById(R.id.tablemain3);
+        btnFilter = view.findViewById(R.id.filter2);
+        etSearch = view.findViewById(R.id.search2);
         loadCompletions();
 
         Spinner spinner = view.findViewById(R.id.completions_spinner);
@@ -78,12 +80,13 @@ public class CompletionsFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String clicked = parent.getItemAtPosition(position).toString();
-                btnFilter = view.findViewById(R.id.filter2);
-                etSearch = view.findViewById(R.id.search2);
-
 
                 if (clicked == "View All") {
+                    stk.removeAllViews();
                     init();
+                    if (completions.size() == 0) {
+                        Toast.makeText(getContext(), "Sorry, no completions to show!", Toast.LENGTH_LONG).show();
+                    }
 
                 } else if (clicked == "Date") {
                     stk.removeAllViews();
@@ -197,7 +200,6 @@ public class CompletionsFragment extends Fragment {
             }
         });
     }
-
 
     //Function to populate table
     public void init() {

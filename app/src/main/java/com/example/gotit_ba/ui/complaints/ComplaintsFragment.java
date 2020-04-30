@@ -60,7 +60,8 @@ public class ComplaintsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         stk = view.findViewById(R.id.tablemain4);
-
+        btnFilter = view.findViewById(R.id.filter1);
+        etSearch = view.findViewById(R.id.search1);
         loadComplaints();
 
         Spinner spinner = view.findViewById(R.id.complaints_spinner);
@@ -79,11 +80,14 @@ public class ComplaintsFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String clicked = parent.getItemAtPosition(position).toString();
-                btnFilter = view.findViewById(R.id.filter1);
-                etSearch = view.findViewById(R.id.search1);
 
                 if (clicked == "View All") {
+                    stk.removeAllViews();
                     init();
+                    init();
+                    if (complaints.size() == 0) {
+                        Toast.makeText(getContext(), "Sorry, no complaints to show!", Toast.LENGTH_LONG).show();
+                    }
 
                 } else if (clicked == "Date") {
                     stk.removeAllViews();
