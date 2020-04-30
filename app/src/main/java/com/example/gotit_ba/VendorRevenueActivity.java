@@ -75,7 +75,7 @@ public class VendorRevenueActivity extends AppCompatActivity {
 
                             //Log.d("DATE:", gi_revenue.get(0).getCreated());
                             for (Revenues i : ven_revenue) {
-                                list0.add(i.getCreated());
+                                list0.add(i.getDriver());
                             }
                             Log.d("VENDOR:", list0.get(0));
                             Log.d("INPUT:", s);

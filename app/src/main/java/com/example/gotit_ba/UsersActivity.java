@@ -44,7 +44,6 @@ public class UsersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_users);
 
         stk = findViewById(R.id.tablemain2);
-
         loadUsers();
 
         Spinner spinner = findViewById(R.id.users_spinner);

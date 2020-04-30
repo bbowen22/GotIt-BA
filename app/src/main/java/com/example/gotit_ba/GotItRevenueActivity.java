@@ -133,7 +133,7 @@ public class GotItRevenueActivity extends AppCompatActivity {
             TableRow tbrow = new TableRow(this);
             //col 1
             TextView t1v = new TextView(this);
-            t1v.setText(r.getCreated() + " ");
+            t1v.setText(r.getCreated() + "  ");
             Log.d("table created value", " " + r.getCreated());
             //t1v.setText(" ");
             t1v.setTextColor(Color.parseColor("#707070"));
@@ -141,19 +141,19 @@ public class GotItRevenueActivity extends AppCompatActivity {
             tbrow.addView(t1v);
             //col2
             TextView t2v = new TextView(this);
-            t2v.setText(r.getDriver() + " ");
+            t2v.setText(r.getDriver() + "  ");
             t2v.setTextColor(Color.parseColor("#707070"));
             t2v.setGravity(Gravity.LEFT);
             tbrow.addView(t2v);
             //col3
             TextView t3v = new TextView(this);
-            t3v.setText(r.getOrder() + " ");
+            t3v.setText(r.getOrder() + "  ");
             t3v.setTextColor(Color.parseColor("#707070"));
             t3v.setGravity(Gravity.LEFT);
             tbrow.addView(t3v);
             //col4
             TextView t4v = new TextView(this);
-            t4v.setText(r.getAmount() + " ");
+            t4v.setText(r.getAmount() + "  ");
             t4v.setTextColor(Color.parseColor("#707070"));
             t4v.setGravity(Gravity.LEFT);
             tbrow.addView(t4v);
@@ -234,26 +234,26 @@ public class GotItRevenueActivity extends AppCompatActivity {
             TableRow tbrow = new TableRow(this);
             //col 1
             TextView t1v = new TextView(this);
-            t1v.setText(c1.getCreated() + " ");
+            t1v.setText(c1.getCreated() + "  ");
 
             t1v.setTextColor(Color.parseColor("#707070"));
             t1v.setGravity(Gravity.LEFT);
             tbrow.addView(t1v);
             //col2
             TextView t2v = new TextView(this);
-            t2v.setText(" " + c1.getDriver() + " ");
+            t2v.setText(" " + c1.getDriver() + "  ");
             t2v.setTextColor(Color.parseColor("#707070"));
             t2v.setGravity(Gravity.LEFT);
             tbrow.addView(t2v);
             //col3
             TextView t3v = new TextView(this);
-            t3v.setText(c1.getOrder() + " ");
+            t3v.setText(c1.getOrder() + "  ");
             t3v.setTextColor(Color.parseColor("#707070"));
             t3v.setGravity(Gravity.LEFT);
             tbrow.addView(t3v);
             //col4
             TextView t4v = new TextView(this);
-            t4v.setText(c1.getAmount() + " ");
+            t4v.setText(c1.getAmount() + "  ");
             t4v.setTextColor(Color.parseColor("#707070"));
             t4v.setGravity(Gravity.LEFT);
             tbrow.addView(t4v);
